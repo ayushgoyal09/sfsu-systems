@@ -31,7 +31,7 @@ public class Login extends Activity implements OnClickListener {
 	private Button loginButton;
 	private EditText username, password;
 	private ProgressDialog pDialog;
-	private static final String LOGIN_URL = "http://192.168.1.4/webservice/login.php";
+	private static final String LOGIN_URL = "http://192.168.43.57/webservice/login.php";
 	private static final String TAG_RESULT = "result";
 	JSONParser jsonParser = new JSONParser();
 	/*

@@ -8,5 +8,6 @@
     <string name="password_hint">Password</string>
     <string name="logo">logo</string>
     <string name="email_hint">Enter your email</string>
+    <string name="scan_device">Scan for a device</string>
 
 </resources>
