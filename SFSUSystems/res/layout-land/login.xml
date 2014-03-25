@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <TextView
+        android:id="@+id/forgot_password"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/password"
+        android:layout_below="@+id/password"
+        android:layout_marginLeft="14dp"
+        android:layout_marginTop="14dp"
+        android:text="@string/forgot_pass" />
+
+    <EditText
+        android:id="@+id/password"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/username"
+        android:layout_below="@+id/username"
+        android:layout_marginTop="14dp"
+        android:ems="10"
+        android:hint="@string/password_hint"
+        android:inputType="textPassword" />
+
+    <Button
+        android:id="@+id/login_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignRight="@+id/forgot_password"
+        android:layout_marginBottom="16dp"
+        android:layout_marginRight="28dp"
+        android:text="@string/login" />
+
+    <EditText
+        android:id="@+id/username"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/logo"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="70dp"
+        android:ems="10"
+        android:hint="@string/username_hint" >
+
+        <requestFocus />
+    </EditText>
+
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="68dp"
+        android:layout_toLeftOf="@+id/forgot_password"
+        android:contentDescription="@string/logo"
+        android:src="@drawable/ic_launcher" />
+
+</RelativeLayout>
