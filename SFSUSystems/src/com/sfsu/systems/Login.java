@@ -31,7 +31,7 @@ public class Login extends Activity implements OnClickListener {
 	private Button loginButton;
 	private EditText username, password;
 	private ProgressDialog pDialog;
-	private static final String LOGIN_URL = "http://192.168.1.4/webservice/login.php";
+	private static final String LOGIN_URL = "http://www.ayushgoyal09.com/webservice/login.php";
 	private static final String TAG_RESULT = "result";
 	JSONParser jsonParser = new JSONParser();
 	/*
@@ -162,7 +162,7 @@ public class Login extends Activity implements OnClickListener {
 				Intent intent = new Intent(getApplicationContext(),
 						Scannit.class);
 				startActivity(intent);
-				Toast.makeText(Login.this, "Welcome " + user, Toast.LENGTH_LONG)
+				Toast.makeText(Login.this, "Welcome " + user, Toast.LENGTH_SHORT)
 						.show();
 				break;
 

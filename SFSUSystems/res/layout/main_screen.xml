@@ -2,16 +2,6 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent" >
 
-    <ImageButton
-        android:id="@+id/scan_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="82dp"
-        android:contentDescription="@string/scan_device"
-        android:src="@drawable/barcode" />
-
     <TextView
         android:id="@+id/scan_format"
         android:layout_width="wrap_content"
@@ -28,5 +18,65 @@
         android:layout_below="@+id/scan_format"
         android:layout_marginTop="45dp"
         android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <ImageButton
+        android:id="@+id/inventory_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/scan_device_textview"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="40dp"
+        android:contentDescription="@string/view_inventory"
+        android:src="@drawable/inventory" />
+
+    <TextView
+        android:id="@+id/scan_device_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/scan_button"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="5dp"
+        android:text="@string/scan_device"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <ImageButton
+        android:id="@+id/scan_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="40dp"
+        android:contentDescription="@string/scan_device"
+        android:src="@drawable/barcode" />
+
+    <TextView
+        android:id="@+id/inventory_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/inventory_button"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="5dp"
+        android:text="@string/view_inventory"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <ImageButton
+        android:id="@+id/profile_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/inventory_textview"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="40dp"
+        android:contentDescription="@string/profile"
+        android:src="@drawable/profile" />
+
+    <TextView
+        android:id="@+id/profile_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/profile_button"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="5dp"
+        android:text="@string/profile"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
 
 </RelativeLayout>

@@ -9,5 +9,12 @@
     <string name="logo">logo</string>
     <string name="email_hint">Enter your email</string>
     <string name="scan_device">Scan for a device</string>
+    <string name="view_inventory">View inventory</string>
+    <string name="profile">Profile</string>
+    <string name="devices">DEVICES</string>
+    <string name="locations">LOCATIONS</string>
+    <string name="owners">OWNERS</string>
+    <string name="add">Add</string>
+    <string name="new_location_hint">Enter location</string>
 
 </resources>
