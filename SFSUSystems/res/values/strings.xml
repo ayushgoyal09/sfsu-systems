@@ -16,5 +16,6 @@
     <string name="owners">OWNERS</string>
     <string name="add">Add</string>
     <string name="new_location_hint">Enter location</string>
+    <string name="search">Search</string>
 
 </resources>

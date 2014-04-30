@@ -1,13 +1,19 @@
 package com.sfsu.systems.inventory;
 
-import com.sfsu.sfsusystems.R;
-
 import android.app.ActionBar;
 import android.app.ActionBar.Tab;
 import android.app.FragmentTransaction;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+
+import com.sfsu.sfsusystems.R;
+import com.sfsu.system.inventory.add.AddOwners;
 
 public class Inventory extends FragmentActivity implements
 		ActionBar.TabListener {
@@ -15,6 +21,7 @@ public class Inventory extends FragmentActivity implements
 	private ViewPager viewPager;
 	private InventoryPagerAdapter inventoryPagerAdapter;
 	private String tabs[] = { "DEVICES", "LOCATIONS", "OWNERS" };
+	String currentTab;
 
 	@Override
 	protected void onCreate(Bundle arg0) {
@@ -63,6 +70,44 @@ public class Inventory extends FragmentActivity implements
 	}
 
 	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		// TODO Auto-generated method stub
+		currentTab = (String) getActionBar().getSelectedTab().getText();
+		Log.i("Tab Selected", currentTab);
+		switch (item.getItemId()) {
+		case R.id.search:
+			openSearch(currentTab);
+			return true;
+		case R.id.add:
+			openAdd(currentTab);
+			return true;
+		default:
+			return super.onOptionsItemSelected(item);
+
+		}
+
+	}
+
+	private void openAdd(String currentTab) {
+		if(currentTab.equals("OWNERS")){
+			Intent intent = new Intent(this,AddOwners.class);
+			startActivity(intent);
+		}
+	}
+
+	private void openSearch(String currentTab) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		MenuInflater inflater = getMenuInflater();
+		inflater.inflate(R.menu.options, menu);
+		return true;
+	}
+
+	@Override
 	public void onTabReselected(Tab arg0, FragmentTransaction arg1) {
 		// TODO Auto-generated method stub
 
@@ -72,6 +117,7 @@ public class Inventory extends FragmentActivity implements
 	public void onTabSelected(Tab arg0, FragmentTransaction arg1) {
 		// TODO Auto-generated method stub
 		viewPager.setCurrentItem(arg0.getPosition());
+
 	}
 
 	@Override

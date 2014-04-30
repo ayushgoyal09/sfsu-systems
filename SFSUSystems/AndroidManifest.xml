@@ -32,6 +32,10 @@
             android:name="com.sfsu.systems.inventory.Inventory"
             android:label="@string/app_name" >
         </activity>
+        <activity
+            android:name="com.sfsu.system.inventory.add.AddOwners"
+            android:label="@string/app_name" >
+        </activity>
     </application>
 
 </manifest>
