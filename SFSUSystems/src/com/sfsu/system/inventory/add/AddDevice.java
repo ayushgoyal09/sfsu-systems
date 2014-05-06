@@ -9,34 +9,40 @@ import org.json.JSONObject;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
 import android.widget.EditText;
 
 import com.sfsu.sfsusystems.R;
 import com.sfsu.systems.JSONParser;
 
-public class AddOwners extends Activity {
-	private static final String URL = "http://www.ayushgoyal09.com/webservice/insert_owners.php";
-	private static final String TAG_SUCCESS = "success";
-	private EditText firstName, lastName;
-	private ProgressDialog pDialog;
-	JSONParser jsonParser = new JSONParser();
+public class AddDevice extends Activity implements OnClickListener{
 
+	private static final String URL = "http://www.ayushgoyal09.com/webservice/insert_device.php";
+//	private static final String TAG_SUCCESS = "success";
+	private EditText deviceName;
+	private ProgressDialog pDialog;
+	private Button mapDevice;
+	JSONParser jsonParser = new JSONParser();
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.add_owners);
-		firstName = (EditText) findViewById(R.id.firstname);
-		lastName = (EditText) findViewById(R.id.lastname);
-
+		setContentView(R.layout.add_devices);
+		deviceName = (EditText) findViewById(R.id.device_name);
+		mapDevice = (Button) findViewById(R.id.map_device);
+		mapDevice.setOnClickListener(this);
+		
 	}
-
+	
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// TODO Auto-generated method stub
@@ -44,46 +50,55 @@ public class AddOwners extends Activity {
 		inflater.inflate(R.menu.action_done, menu);
 		return super.onCreateOptionsMenu(menu);
 	}
-
+	
 	@Override
 	public boolean onMenuItemSelected(int featureId, MenuItem item) {
 		// TODO Auto-generated method stub
 		switch (item.getItemId()) {
 		case R.id.action_done:
-			new CreateNewOwner().execute();
+			new CreateNewDevice().execute();
 			return true;
 		default:
 			return super.onMenuItemSelected(featureId, item);
 		}
 	}
 
-
-	class CreateNewOwner extends AsyncTask<String, String, String>{
-
+	@Override
+	public void onClick(View v) {
+		// TODO Auto-generated method stub
+		if(v.getId()==R.id.map_device){
+			Intent intent = new Intent(this,MapDevice.class);
+			startActivity(intent);
+		}
+		
+	}
+	
+	
+	class CreateNewDevice extends AsyncTask<String, String, String>
+	{
 		/**
 	     * Before starting background thread Show Progress Dialog
 	     * */
 	    @Override
 	    protected void onPreExecute() {
 	        super.onPreExecute();
-	        pDialog = new ProgressDialog(AddOwners.this);
-	        pDialog.setMessage("Creating Product..");
+	        pDialog = new ProgressDialog(AddDevice.this);
+	        pDialog.setMessage("Adding Device..");
 	        pDialog.setIndeterminate(false);
 	        pDialog.setCancelable(true);
 	        pDialog.show();
 	    }
-		
+
 		@Override
 		protected String doInBackground(String... params) {
 			// TODO Auto-generated method stub
-			String first = firstName.getText().toString();
-			String last = lastName.getText().toString();
 			List<NameValuePair> args = new ArrayList<NameValuePair>();
-			args.add(new BasicNameValuePair("firstname", first));
-			args.add(new BasicNameValuePair("lastname", last));
+			String device=deviceName.getText().toString();
+			args.add(new BasicNameValuePair("device", device));
 			Log.d("REQUEST", args.toString());
 			JSONObject json = jsonParser.makeHttpRequest(URL, "POST",
 					args);
+			
 			return null;
 		}
 		
@@ -97,7 +112,6 @@ public class AddOwners extends Activity {
 		
 	}
 
-
-
+	
+	
 }
-

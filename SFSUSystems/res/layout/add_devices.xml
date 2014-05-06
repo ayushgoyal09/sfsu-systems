@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="com.sfsu.system.inventory.add.AddOwners" >
+    android:layout_height="match_parent" >
 
     <EditText
-        android:id="@+id/firstname"
-        android:hint="@string/firstname"
+        android:id="@+id/device_name"
+        android:hint="@string/device_hint"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
@@ -18,14 +16,12 @@
         <requestFocus />
     </EditText>
 
-    <EditText
-        android:id="@+id/lastname"
-        android:hint="@string/lastname"
+    <Button
+        android:id="@+id/map_device"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/firstname"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="42dp"
-        android:ems="13" />
+        android:layout_centerVertical="true"
+        android:text="@string/map_device" />
 
 </RelativeLayout>

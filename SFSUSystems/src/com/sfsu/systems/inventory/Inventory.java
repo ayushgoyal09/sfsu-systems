@@ -13,6 +13,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 
 import com.sfsu.sfsusystems.R;
+import com.sfsu.system.inventory.add.AddDevice;
 import com.sfsu.system.inventory.add.AddOwners;
 
 public class Inventory extends FragmentActivity implements
@@ -91,6 +92,10 @@ public class Inventory extends FragmentActivity implements
 	private void openAdd(String currentTab) {
 		if(currentTab.equals("OWNERS")){
 			Intent intent = new Intent(this,AddOwners.class);
+			startActivity(intent);
+		}
+		if(currentTab.equals("DEVICES")){
+			Intent intent = new Intent(this,AddDevice.class);
 			startActivity(intent);
 		}
 	}
