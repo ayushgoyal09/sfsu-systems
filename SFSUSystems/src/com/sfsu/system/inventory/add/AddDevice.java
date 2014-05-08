@@ -24,25 +24,32 @@ import android.widget.EditText;
 import com.sfsu.sfsusystems.R;
 import com.sfsu.systems.JSONParser;
 
-public class AddDevice extends Activity implements OnClickListener{
+public class AddDevice extends Activity implements OnClickListener {
 
 	private static final String URL = "http://www.ayushgoyal09.com/webservice/insert_device.php";
-//	private static final String TAG_SUCCESS = "success";
-	private EditText deviceName;
+	// private static final String TAG_SUCCESS = "success";
+	private EditText barcodeText, nameText, ip_addressText, osText, modelText,
+			yearText;
 	private ProgressDialog pDialog;
 	private Button mapDevice;
 	JSONParser jsonParser = new JSONParser();
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.add_devices);
-		deviceName = (EditText) findViewById(R.id.device_name);
+		barcodeText=(EditText) findViewById(R.id.barcode);
+		nameText = (EditText) findViewById(R.id.device_name);
+		ip_addressText=(EditText) findViewById(R.id.ip_address);
+		osText=(EditText) findViewById(R.id.os);
+		modelText=(EditText) findViewById(R.id.model);
+		yearText=(EditText) findViewById(R.id.year);
 		mapDevice = (Button) findViewById(R.id.map_device);
 		mapDevice.setOnClickListener(this);
-		
+
 	}
-	
+
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// TODO Auto-generated method stub
@@ -50,7 +57,7 @@ public class AddDevice extends Activity implements OnClickListener{
 		inflater.inflate(R.menu.action_done, menu);
 		return super.onCreateOptionsMenu(menu);
 	}
-	
+
 	@Override
 	public boolean onMenuItemSelected(int featureId, MenuItem item) {
 		// TODO Auto-generated method stub
@@ -66,52 +73,58 @@ public class AddDevice extends Activity implements OnClickListener{
 	@Override
 	public void onClick(View v) {
 		// TODO Auto-generated method stub
-		if(v.getId()==R.id.map_device){
-			Intent intent = new Intent(this,MapDevice.class);
+		if (v.getId() == R.id.map_device) {
+			Intent intent = new Intent(this, MapDevice.class);
 			startActivity(intent);
 		}
-		
+
 	}
-	
-	
-	class CreateNewDevice extends AsyncTask<String, String, String>
-	{
+
+	class CreateNewDevice extends AsyncTask<String, String, String> {
 		/**
-	     * Before starting background thread Show Progress Dialog
-	     * */
-	    @Override
-	    protected void onPreExecute() {
-	        super.onPreExecute();
-	        pDialog = new ProgressDialog(AddDevice.this);
-	        pDialog.setMessage("Adding Device..");
-	        pDialog.setIndeterminate(false);
-	        pDialog.setCancelable(true);
-	        pDialog.show();
-	    }
+		 * Before starting background thread Show Progress Dialog
+		 * */
+		@Override
+		protected void onPreExecute() {
+			super.onPreExecute();
+			pDialog = new ProgressDialog(AddDevice.this);
+			pDialog.setMessage("Adding Device..");
+			pDialog.setIndeterminate(false);
+			pDialog.setCancelable(true);
+			pDialog.show();
+		}
 
 		@Override
 		protected String doInBackground(String... params) {
 			// TODO Auto-generated method stub
+			Log.i("checkpoint", "HERE");
 			List<NameValuePair> args = new ArrayList<NameValuePair>();
-			String device=deviceName.getText().toString();
-			args.add(new BasicNameValuePair("device", device));
+			String barcode = barcodeText.getText().toString();
+			String name = nameText.getText().toString();
+			String ip_address = ip_addressText.getText().toString();
+			String os = osText.getText().toString();
+			String model = modelText.getText().toString();
+			String year = yearText.getText().toString();
+			args.add(new BasicNameValuePair("barcode", barcode));
+			args.add(new BasicNameValuePair("name", name));
+			args.add(new BasicNameValuePair("ip_address", ip_address));
+			args.add(new BasicNameValuePair("os", os));
+			args.add(new BasicNameValuePair("model", model));
+			args.add(new BasicNameValuePair("year", year));
 			Log.d("REQUEST", args.toString());
-			JSONObject json = jsonParser.makeHttpRequest(URL, "POST",
-					args);
-			
+			JSONObject json = jsonParser.makeHttpRequest(URL, "POST", args);
+
 			return null;
 		}
-		
+
 		/**
-         * After completing background task Dismiss the progress dialog
-         * **/
-        protected void onPostExecute(String file_url) {
-            // dismiss the dialog once done
-            pDialog.dismiss();
-        }
-		
+		 * After completing background task Dismiss the progress dialog
+		 * **/
+		protected void onPostExecute(String file_url) {
+			// dismiss the dialog once done
+			pDialog.dismiss();
+		}
+
 	}
 
-	
-	
 }

@@ -44,6 +44,10 @@
             android:name="com.sfsu.system.inventory.add.AddOwners"
             android:label="@string/add" >
         </activity>
+        <activity
+            android:name="com.sfsu.systems.DisplayDevice"
+            android:label="@string/app_name" >
+        </activity>
     </application>
 
 </manifest>

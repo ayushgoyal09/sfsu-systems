@@ -5,23 +5,72 @@
 
     <EditText
         android:id="@+id/device_name"
-        android:hint="@string/device_hint"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
+        android:layout_below="@+id/barcode"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="79dp"
-        android:ems="13" >
-
-        <requestFocus />
+        android:layout_marginTop="35dp"
+        android:ems="13"
+        android:hint="@string/device_hint" >
     </EditText>
 
     <Button
         android:id="@+id/map_device"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="14dp"
         android:text="@string/map_device" />
+
+    <EditText
+        android:id="@+id/ip_address"
+        android:hint="@string/ip_hint"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/device_name"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="35dp"
+        android:ems="13" />
+
+    <EditText
+        android:id="@+id/os"
+        android:hint="@string/os_hint"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ip_address"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="35dp"
+        android:ems="13" />
+
+    <EditText
+        android:id="@+id/model"
+        android:hint="@string/model_hint"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/os"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="35dp"
+        android:ems="13" />
+
+    <EditText
+        android:id="@+id/year"
+        android:hint="@string/year_hint"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/model"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="35dp"
+        android:ems="13" />
+
+    <EditText
+        android:id="@+id/barcode"
+        android:hint="@string/barcode_hint"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="35dp"
+        android:ems="13" />
 
 </RelativeLayout>

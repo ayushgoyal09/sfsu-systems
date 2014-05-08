@@ -22,5 +22,15 @@
     <string name="action_done">DONE</string>
     <string name="device_hint">Enter Device Name</string>
     <string name="map_device">Map Device</string>
+    <string name="device_name_label">NAME</string>
+    <string name="ip_address">IP</string>
+    <string name="os">OS</string>
+    <string name="model">MODEL</string>
+    <string name="year">YEAR</string>
+    <string name="barcode_hint">Enter bacode or scan</string>
+    <string name="ip_hint">Enter IP address</string>
+    <string name="model_hint">Enter Model</string>
+    <string name="os_hint">Enter Operating System</string>
+    <string name="year_hint">Enter Year</string>
 
 </resources>

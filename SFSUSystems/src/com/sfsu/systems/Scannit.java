@@ -60,8 +60,11 @@ public class Scannit extends Activity implements OnClickListener {
 			// call to methods in IntentResult class for the scanned results
 			String content = scanningResult.getContents();
 			String format = scanningResult.getFormatName();
-			scanFormat.setText("FORMAT: " + format);
-			scanContent.setText("CONTENT: " + content);
+			Intent i = new Intent(getApplicationContext(),DisplayDevice.class);
+			i.putExtra("content", content);
+			startActivity(i);
+//			scanFormat.setText("FORMAT: " + format);
+//			scanContent.setText("CONTENT: " + content);
 		} else {
 			Toast toast = Toast.makeText(getApplicationContext(),
 					"No scan data received!", Toast.LENGTH_SHORT);
