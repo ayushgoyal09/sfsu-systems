@@ -20,8 +20,13 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.Toast;
 
+import com.google.zxing.integration.android.IntentIntegrator;
+import com.google.zxing.integration.android.IntentResult;
 import com.sfsu.sfsusystems.R;
+import com.sfsu.systems.DisplayDevice;
 import com.sfsu.systems.JSONParser;
 
 public class AddDevice extends Activity implements OnClickListener {
@@ -32,6 +37,7 @@ public class AddDevice extends Activity implements OnClickListener {
 			yearText;
 	private ProgressDialog pDialog;
 	private Button mapDevice;
+	private ImageButton scanButton;
 	JSONParser jsonParser = new JSONParser();
 
 	@Override
@@ -47,6 +53,8 @@ public class AddDevice extends Activity implements OnClickListener {
 		yearText=(EditText) findViewById(R.id.year);
 		mapDevice = (Button) findViewById(R.id.map_device);
 		mapDevice.setOnClickListener(this);
+		scanButton = (ImageButton) findViewById(R.id.scan_button);
+		scanButton.setOnClickListener(this);
 
 	}
 
@@ -78,6 +86,29 @@ public class AddDevice extends Activity implements OnClickListener {
 			startActivity(intent);
 		}
 
+		if(v.getId()==R.id.scan_button){
+			IntentIntegrator scanIntegrator = new IntentIntegrator(this);
+			scanIntegrator.initiateScan();
+		}
+	}
+	
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode,
+			Intent intent) {
+		// TODO Auto-generated method stub
+		super.onActivityResult(requestCode, resultCode, intent);
+		IntentResult scanningResult = IntentIntegrator.parseActivityResult(
+				requestCode, resultCode, intent);
+		if (scanningResult != null) {
+			// call to methods in IntentResult class for the scanned results
+			String content = scanningResult.getContents();
+			barcodeText.setText(content);
+
+		} else {
+			Toast toast = Toast.makeText(getApplicationContext(),
+					"No scan data received!", Toast.LENGTH_SHORT);
+			toast.show();
+		}
 	}
 
 	class CreateNewDevice extends AsyncTask<String, String, String> {
