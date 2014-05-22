@@ -1,8 +1,16 @@
 package com.sfsu.systems.inventory;
 
 import java.util.ArrayList;
+import java.util.List;
 
+import org.apache.http.NameValuePair;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,8 +18,18 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import com.sfsu.sfsusystems.R;
+import com.sfsu.systems.JSONParser;
 
 public class Locations extends android.support.v4.app.Fragment {
+
+	private static final String URL = "http://www.ayushgoyal09.com/webservice/get_all_locations.php";
+	private static final String TAG_SUCCESS = "success";
+	private static final String TAG_LOCATIONS = "locations";
+	private static final String TAG_LOCATION_NAME = "name";
+	JSONArray locations;
+	ArrayList<String> locationsList;
+	ListView list_all_locations;
+	ArrayAdapter<String> adapter;
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -19,27 +37,54 @@ public class Locations extends android.support.v4.app.Fragment {
 		// TODO Auto-generated method stub
 
 		View rootView = inflater.inflate(R.layout.locations, container, false);
-
-		ListView locationsList = (ListView) rootView
-				.findViewById(R.id.locations_list);
-		String[] testVal = new String[] { "Administration", "Digitization",
-				"Catalogue", "Library Retrieval", "Study Commons",
-				"Administration", "Digitization", "Catalogue",
-				"Library Retrieval", "Study Commons", "Administration",
-				"Digitization", "Catalogue", "Library Retrieval",
-				"Study Commons", "Administration", "Digitization", "Catalogue",
-				"Library Retrieval", "Study Commons", "Administration",
-				"Digitization", "Catalogue", "Library Retrieval",
-				"Study Commons" };
-		ArrayList<String> list = new ArrayList<String>();
-		for (int i = 0; i < testVal.length; i++) {
-			list.add(testVal[i]);
-		}
-		ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(),
-				R.layout.locations_adapter, list);
-		locationsList.setAdapter(adapter);
-
+		list_all_locations = (ListView) rootView.findViewById(R.id.locations_list);
+		locationsList = new ArrayList<String>();
+		new GetOwners().execute();
 		return rootView;
+	}
+
+	class GetOwners extends AsyncTask<String, String, String> {
+
+		@Override
+		protected String doInBackground(String... params) {
+			// TODO Auto-generated method stub
+			List<NameValuePair> args = new ArrayList<NameValuePair>();
+			JSONObject json = new JSONParser()
+					.makeHttpRequest(URL, "GET", args);
+			Log.i("Output", json.toString());
+			try {
+				int success = json.getInt(TAG_SUCCESS);
+				if (success == 1) {
+					locations = json.getJSONArray(TAG_LOCATIONS);
+					for (int i = 0; i < locations.length(); i++) {
+						JSONObject location = locations.getJSONObject(i);
+						String locationName = location.getString(TAG_LOCATION_NAME);
+								
+						
+						locationsList.add(locationName);
+
+						Log.i("Location: ", locationsList.get(i).toString());
+
+					}
+
+				}
+
+			} catch (JSONException e) {
+				e.printStackTrace();
+			}
+			return null;
+		}
+
+		@Override
+		protected void onPostExecute(String result) {
+			// TODO Auto-generated method stub
+			super.onPostExecute(result);
+			Log.i("size", locationsList.size() + "");
+			adapter = new ArrayAdapter<String>(getActivity(),
+					R.layout.locations_adapter,R.id.textView1, locationsList);
+			list_all_locations.setAdapter(adapter);
+
+		}
 	}
 
 }

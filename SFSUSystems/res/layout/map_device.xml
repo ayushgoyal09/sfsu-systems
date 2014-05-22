@@ -5,7 +5,7 @@
     android:orientation="vertical" 
     android:background="@drawable/ground">
 	
-    <com.sfsu.system.inventory.add.TestView 
+    <com.sfsu.system.inventory.add.DeviceSpriteView 
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"/>
 

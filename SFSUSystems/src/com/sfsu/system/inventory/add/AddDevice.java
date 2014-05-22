@@ -30,10 +30,12 @@ import com.sfsu.systems.JSONParser;
 
 public class AddDevice extends Activity implements OnClickListener {
 
+	private static final int MAP_DEVICE_REQUEST = 10;
 	private static final String URL = "http://www.ayushgoyal09.com/webservice/insert_device.php";
 	// private static final String TAG_SUCCESS = "success";
 	private EditText barcodeText, nameText, ip_addressText, osText, modelText,
 			yearText;
+	private String x_value, y_value;
 	private ProgressDialog pDialog;
 	private Button mapDevice;
 	private ImageButton scanButton;
@@ -44,12 +46,12 @@ public class AddDevice extends Activity implements OnClickListener {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.add_devices);
-		barcodeText=(EditText) findViewById(R.id.barcode);
+		barcodeText = (EditText) findViewById(R.id.barcode);
 		nameText = (EditText) findViewById(R.id.device_name);
-		ip_addressText=(EditText) findViewById(R.id.ip_address);
-		osText=(EditText) findViewById(R.id.os);
-		modelText=(EditText) findViewById(R.id.model);
-		yearText=(EditText) findViewById(R.id.year);
+		ip_addressText = (EditText) findViewById(R.id.ip_address);
+		osText = (EditText) findViewById(R.id.os);
+		modelText = (EditText) findViewById(R.id.model);
+		yearText = (EditText) findViewById(R.id.year);
 		mapDevice = (Button) findViewById(R.id.map_device);
 		mapDevice.setOnClickListener(this);
 		scanButton = (ImageButton) findViewById(R.id.scan_button);
@@ -82,31 +84,45 @@ public class AddDevice extends Activity implements OnClickListener {
 		// TODO Auto-generated method stub
 		if (v.getId() == R.id.map_device) {
 			Intent intent = new Intent(this, MapDevice.class);
-			startActivity(intent);
+			int requestCode = 10;
+			// startActivity(intent);
+			startActivityForResult(intent, requestCode);
+
 		}
 
-		if(v.getId()==R.id.scan_button){
+		if (v.getId() == R.id.scan_button) {
 			IntentIntegrator scanIntegrator = new IntentIntegrator(this);
 			scanIntegrator.initiateScan();
 		}
 	}
-	
+
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode,
 			Intent intent) {
-		// TODO Auto-generated method stub
-		super.onActivityResult(requestCode, resultCode, intent);
-		IntentResult scanningResult = IntentIntegrator.parseActivityResult(
-				requestCode, resultCode, intent);
-		if (scanningResult != null) {
-			// call to methods in IntentResult class for the scanned results
-			String content = scanningResult.getContents();
-			barcodeText.setText(content);
 
+		Toast.makeText(getApplicationContext(),
+				"REQ CODE : " + requestCode + "RES" + resultCode,
+				Toast.LENGTH_SHORT).show();
+
+		super.onActivityResult(requestCode, resultCode, intent);
+		if (requestCode == MAP_DEVICE_REQUEST) {
+			x_value = intent.getExtras().getString("x_value");
+			y_value = intent.getExtras().getString("y_value");
+			Toast.makeText(getApplicationContext(), "X: " + x_value+" Y:"+y_value,
+					Toast.LENGTH_SHORT).show();
 		} else {
-			Toast toast = Toast.makeText(getApplicationContext(),
-					"No scan data received!", Toast.LENGTH_SHORT);
-			toast.show();
+			IntentResult scanningResult = IntentIntegrator.parseActivityResult(
+					requestCode, resultCode, intent);
+			if (scanningResult != null) {
+				// call to methods in IntentResult class for the scanned results
+				String content = scanningResult.getContents();
+				barcodeText.setText(content);
+
+			} else {
+				Toast toast = Toast.makeText(getApplicationContext(),
+						"No scan data received!", Toast.LENGTH_SHORT);
+				toast.show();
+			}
 		}
 	}
 
@@ -141,6 +157,9 @@ public class AddDevice extends Activity implements OnClickListener {
 			args.add(new BasicNameValuePair("os", os));
 			args.add(new BasicNameValuePair("model", model));
 			args.add(new BasicNameValuePair("year", year));
+			args.add(new BasicNameValuePair("x_value", x_value));
+			args.add(new BasicNameValuePair("y_value", y_value));
+			
 			Log.d("REQUEST", args.toString());
 			JSONObject json = jsonParser.makeHttpRequest(URL, "POST", args);
 
