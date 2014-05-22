@@ -4,7 +4,10 @@
     android:layout_height="match_parent"
     android:orientation="vertical" 
     android:background="@drawable/ground">
+	
+    <com.sfsu.system.inventory.add.TestView 
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"/>
 
-    
 
 </LinearLayout>

@@ -26,7 +26,6 @@ import android.widget.Toast;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 import com.sfsu.sfsusystems.R;
-import com.sfsu.systems.DisplayDevice;
 import com.sfsu.systems.JSONParser;
 
 public class AddDevice extends Activity implements OnClickListener {
