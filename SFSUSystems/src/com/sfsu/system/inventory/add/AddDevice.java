@@ -159,6 +159,7 @@ public class AddDevice extends Activity implements OnClickListener {
 			args.add(new BasicNameValuePair("year", year));
 			args.add(new BasicNameValuePair("x_value", x_value));
 			args.add(new BasicNameValuePair("y_value", y_value));
+			args.add(new BasicNameValuePair("location_id", ""+6));
 			
 			Log.d("REQUEST", args.toString());
 			JSONObject json = jsonParser.makeHttpRequest(URL, "POST", args);

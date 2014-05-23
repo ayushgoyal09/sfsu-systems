@@ -8,12 +8,14 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -40,6 +42,16 @@ public class Locations extends android.support.v4.app.Fragment {
 		list_all_locations = (ListView) rootView.findViewById(R.id.locations_list);
 		locationsList = new ArrayList<String>();
 		new GetOwners().execute();
+		list_all_locations.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+			@Override
+			public void onItemClick(AdapterView<?> parent, View view, int position,
+					long id) {
+				Intent intent = new Intent(getActivity(),DevicesPositionOnMap.class);
+				startActivity(intent);
+								
+			}
+		});
 		return rootView;
 	}
 

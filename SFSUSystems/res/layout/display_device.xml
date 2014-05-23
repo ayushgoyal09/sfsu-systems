@@ -22,7 +22,6 @@
         android:layout_alignBottom="@+id/device_name_label"
         android:layout_marginLeft="40dp"
         android:layout_toRightOf="@+id/device_name_label"
-        android:text="Large Text"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <TextView
@@ -41,7 +40,6 @@
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/ip_label"
         android:layout_alignLeft="@+id/device_name"
-        android:text="Large Text"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <TextView
@@ -61,9 +59,8 @@
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/os_label"
         android:layout_alignLeft="@+id/ip_address"
-        android:text="Large Text"
         android:textAppearance="?android:attr/textAppearanceLarge" />
-    
+
     <TextView
         android:id="@+id/model_label"
         android:layout_width="wrap_content"
@@ -74,16 +71,15 @@
         android:layout_marginTop="40dp"
         android:text="@string/model"
         android:textAppearance="?android:attr/textAppearanceLarge" />
-    
+
     <TextView
         android:id="@+id/model"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/model_label"
         android:layout_alignLeft="@+id/os"
-        android:text="Large Text"
         android:textAppearance="?android:attr/textAppearanceLarge" />
-    
+
     <TextView
         android:id="@+id/year_label"
         android:layout_width="wrap_content"
@@ -94,14 +90,13 @@
         android:layout_marginTop="40dp"
         android:text="@string/year"
         android:textAppearance="?android:attr/textAppearanceLarge" />
-    
+
     <TextView
         android:id="@+id/year"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/year_label"
         android:layout_alignLeft="@+id/model"
-        android:text="Large Text"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
 </RelativeLayout>

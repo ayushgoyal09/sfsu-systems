@@ -32,7 +32,7 @@ public class Devices extends Fragment {
 	private static final String TAG_DEVICES = "devices";
 
 	private static final String TAG_DEVICE_NAME = "name";
-	JSONArray devices;
+	public static JSONArray devices;
 	ArrayList<String> devicesList;
 	ListView list_all_devices;
 	ArrayAdapter<String> adapter;
