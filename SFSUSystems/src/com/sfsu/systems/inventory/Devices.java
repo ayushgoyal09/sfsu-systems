@@ -1,3 +1,7 @@
+/**
+ * This Fragment is for the DEVICES Tab in the Inventory activity. 
+ */
+
 package com.sfsu.systems.inventory;
 
 import java.util.ArrayList;

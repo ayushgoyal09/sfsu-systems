@@ -1,3 +1,7 @@
+/**
+ * This class is a FragmentActivity. It uses PageView with three tabs: Devices, Locations, Owners. 
+ */
+
 package com.sfsu.systems.inventory;
 
 import android.app.ActionBar;

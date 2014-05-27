@@ -1,3 +1,8 @@
+/**
+ * The Add Device class is an Activity that can be used to save a new device to the inventory.
+ * It also provides a button (Map Device) to mark device location on floor Map.
+ */
+
 package com.sfsu.system.inventory.add;
 
 import java.util.ArrayList;
@@ -100,15 +105,13 @@ public class AddDevice extends Activity implements OnClickListener {
 	protected void onActivityResult(int requestCode, int resultCode,
 			Intent intent) {
 
-		Toast.makeText(getApplicationContext(),
-				"REQ CODE : " + requestCode + "RES" + resultCode,
-				Toast.LENGTH_SHORT).show();
+
 
 		super.onActivityResult(requestCode, resultCode, intent);
 		if (requestCode == MAP_DEVICE_REQUEST) {
 			x_value = intent.getExtras().getString("x_value");
 			y_value = intent.getExtras().getString("y_value");
-			Toast.makeText(getApplicationContext(), "X: " + x_value+" Y:"+y_value,
+			Toast.makeText(getApplicationContext(), "Position Marked",
 					Toast.LENGTH_SHORT).show();
 		} else {
 			IntentResult scanningResult = IntentIntegrator.parseActivityResult(
@@ -173,6 +176,10 @@ public class AddDevice extends Activity implements OnClickListener {
 		protected void onPostExecute(String file_url) {
 			// dismiss the dialog once done
 			pDialog.dismiss();
+			Toast toast = Toast.makeText(getApplicationContext(),
+					"Device added successfully", Toast.LENGTH_SHORT);
+			toast.show();
+			finish();
 		}
 
 	}

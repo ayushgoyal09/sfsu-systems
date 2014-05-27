@@ -23,8 +23,8 @@ public final class R {
         public static final int profile=0x7f020009;
     }
     public static final class id {
-        public static final int action_done=0x7f070022;
-        public static final int add=0x7f070024;
+        public static final int action_done=0x7f070023;
+        public static final int add=0x7f070025;
         public static final int barcode=0x7f070001;
         public static final int device_item=0x7f07000b;
         public static final int device_name=0x7f070000;
@@ -46,6 +46,7 @@ public final class R {
         public static final int model_label=0x7f070010;
         public static final int os=0x7f070004;
         public static final int os_label=0x7f07000f;
+        public static final int owner_item=0x7f070022;
         public static final int owners_list=0x7f070021;
         public static final int pager=0x7f070012;
         public static final int password=0x7f070017;
@@ -55,7 +56,7 @@ public final class R {
         public static final int scan_content=0x7f07001b;
         public static final int scan_device_textview=0x7f07001d;
         public static final int scan_format=0x7f07001a;
-        public static final int search=0x7f070023;
+        public static final int search=0x7f070024;
         public static final int textView1=0x7f07000c;
         public static final int username=0x7f070016;
         public static final int year=0x7f070006;

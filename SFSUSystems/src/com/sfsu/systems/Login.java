@@ -1,4 +1,7 @@
-/*This class serves as the main activity for the project*/
+/**
+ * This class serves as the main activity for the project. It provides a login interface for the user. 
+ */
+
 package com.sfsu.systems;
 
 import java.util.ArrayList;

@@ -1,3 +1,8 @@
+/**
+ * The Map Device class is an Activity that shows the floor map
+ * so the user may mark the position of device. * 
+ */
+
 package com.sfsu.system.inventory.add;
 
 import android.app.Activity;
@@ -35,12 +40,12 @@ public class MapDevice extends Activity {
 		// TODO Auto-generated method stub
 		switch (item.getItemId()) {
 		case R.id.action_done:
-//			Toast.makeText(getApplicationContext(), "SAVINGGGG",
-//					Toast.LENGTH_SHORT).show();
+			// Toast.makeText(getApplicationContext(), "SAVINGGGG",
+			// Toast.LENGTH_SHORT).show();
 			Intent intent = getIntent();
-			
-			intent.putExtra("x_value",""+DeviceSpriteView.x);
-			intent.putExtra("y_value",""+DeviceSpriteView.y); 
+
+			intent.putExtra("x_value", "" + DeviceSpriteView.x);
+			intent.putExtra("y_value", "" + DeviceSpriteView.y);
 			setResult(RESULT_OK, intent);
 			finish();
 			return true;

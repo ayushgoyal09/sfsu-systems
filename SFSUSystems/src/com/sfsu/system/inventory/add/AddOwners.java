@@ -1,3 +1,7 @@
+/**
+ * The Add Owners class is an Activity that can be used to save a new owner to the inventory. * 
+ */
+
 package com.sfsu.system.inventory.add;
 
 import java.util.ArrayList;

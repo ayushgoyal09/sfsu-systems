@@ -1,8 +1,15 @@
+/**
+ * This Scannit class is the Activity presented to user on successfull login.
+ * It has three buttons, Scannit: scan for a device, Inventory: lookup inventory, and 
+ * Profile: view user profile.  
+ */
+
 package com.sfsu.systems;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageButton;
@@ -38,8 +45,10 @@ public class Scannit extends Activity implements OnClickListener {
 	public void onClick(View v) {
 		if (v.getId() == R.id.scan_button) {
 			// method initiateScan of the class IntentIntegrator is called.
+			
 			IntentIntegrator scanIntegrator = new IntentIntegrator(this);
 			scanIntegrator.initiateScan();
+			
 		}
 
 		if (v.getId() == R.id.inventory_button) {

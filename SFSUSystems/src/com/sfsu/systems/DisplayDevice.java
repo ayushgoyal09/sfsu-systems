@@ -1,3 +1,7 @@
+/**
+ * The Display Device class is an Activity that is used to display information about a device 
+ */
+
 package com.sfsu.systems;
 
 import java.util.ArrayList;
@@ -63,8 +67,8 @@ public class DisplayDevice extends Activity {
 					.makeHttpRequest(URL, "GET", args);
 			try {
 				device = json.getJSONArray("device");
-				Log.i("device",""+device.toString());
-				
+				Log.i("device", "" + device.toString());
+
 			} catch (JSONException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -79,9 +83,11 @@ public class DisplayDevice extends Activity {
 			for (int i = 0; i < device.length(); i++) {
 				try {
 					JSONObject device_attribute = device.getJSONObject(i);
-					//setting the values fetched to corresponding textviews on Display device activity.
+					// setting the values fetched to corresponding textviews on
+					// Display device activity.
 					device_name.setText(device_attribute.getString("name"));
-					ip_address.setText(device_attribute.getString("ip_address"));
+					ip_address
+							.setText(device_attribute.getString("ip_address"));
 					model.setText(device_attribute.getString("model"));
 					year.setText(device_attribute.getString("year"));
 					os.setText(device_attribute.getString("os"));
@@ -89,8 +95,7 @@ public class DisplayDevice extends Activity {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-				//String name = owner.getString(TAG_FIRSTNAME);
-				
+				// String name = owner.getString(TAG_FIRSTNAME);
 
 			}
 

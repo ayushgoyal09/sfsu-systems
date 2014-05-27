@@ -1,3 +1,7 @@
+/**
+ * This Fragment is for the OWNERS Tab in the Inventory activity. 
+ */
+
 package com.sfsu.systems.inventory;
 
 import java.util.ArrayList;
@@ -84,7 +88,7 @@ public class Owners extends Fragment {
 			super.onPostExecute(result);
 			Log.i("size", ownersList.size() + "");
 			adapter = new ArrayAdapter<String>(getActivity(),
-					R.layout.owners_adapter, ownersList);
+					R.layout.owners_adapter,R.id.textView1, ownersList);
 			list_all_owners.setAdapter(adapter);
 
 		}

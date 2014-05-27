@@ -1,3 +1,8 @@
+/**
+ * This View is used to display the positions of all devices marked on map 
+ */
+
+
 package com.sfsu.systems.inventory;
 
 import org.json.JSONException;

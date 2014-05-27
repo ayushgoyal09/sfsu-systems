@@ -1,3 +1,8 @@
+/**
+ * This is a simple activity that shows positions of all devices on floor map 
+ */
+
+
 package com.sfsu.systems.inventory;
 
 import android.app.Activity;

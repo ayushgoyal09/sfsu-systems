@@ -1,3 +1,8 @@
+/**
+ * The DeviceSpriteView class is a Custom view that implements touch
+ * event to mark position of a device on floor map  
+ */
+
 package com.sfsu.system.inventory.add;
 
 import android.content.Context;
